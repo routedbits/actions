@@ -1,0 +1,18 @@
+---
+name: "Actions for Discord"
+description: "Outputs a message to Discord"
+author: RoutedBits
+branding:
+  icon: message-square
+  color: gray-dark
+
+inputs:
+  args:
+    description: 'The message to display in the Discord message.'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - run: echo ${{ inputs.args }}
+      shell: bash
