@@ -7,12 +7,16 @@ branding:
   color: gray-dark
 
 inputs:
-  args:
+  msg:
     description: 'The message to display in the Discord message.'
     required: true
 
 runs:
   using: composite
   steps:
-    - run: echo ${{ inputs.args }}
+    - run: >
+        curl -X POST
+        -H "Content-Type: application/json"
+        --data "{\"content\": \"${{ inputs.msg }}\"}"
+        $DISCORD_WEBHOOK
       shell: bash
